@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb-container
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+
+  springboot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: user-management-container
+    depends_on:
+      - mongodb
+    ports:
+      - "8080:8080"
+
+volumes:
+  mongodb-data: {}

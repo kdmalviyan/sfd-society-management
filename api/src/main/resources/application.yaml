@@ -1,0 +1,28 @@
+public:
+  urls: /auth/signup,/auth/login,/actuator
+system:
+  setup:
+    roles: ROLE_SUPERADMIN, ROLE_GUEST
+    users: superadmin
+
+security:
+  secret:
+    salt: 13127B332A45B4C86F69618A3497813127B332A45B4C86F69618A3497813127B332A45B4C86F69618A3497813127B332A45B4C86F69618A34978
+  token:
+    expires: 60000
+tenant:
+  db-config:
+    location:
+      s3-bucket: mongodb-documents
+      region: us-east-1
+      #filename: mongodb-tenants-docker.json
+      filename: mongodb-tenants-local.json
+spring:
+  profiles:
+    active: dev
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
