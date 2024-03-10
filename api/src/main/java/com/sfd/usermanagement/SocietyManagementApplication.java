@@ -7,10 +7,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-public class MultitenantUserManagementApplication {
+public class SocietyManagementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MultitenantUserManagementApplication.class, args);
+		SpringApplication.run(SocietyManagementApplication.class, args);
 	}
 
 	@Bean

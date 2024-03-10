@@ -1,5 +1,6 @@
 package com.sfd.usermanagement;
 
+import com.sfd.usermanagement.common.InvalidDataException;
 import com.sfd.usermanagement.role.RoleException;
 import com.sfd.usermanagement.security.InvalidCredentialsException;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(InvalidCredentialsException.class)
     public ResponseEntity<?> handleException(InvalidCredentialsException exception){
+        return ResponseEntity.status(exception.getStatusCode())
+                .body(exception.getMessage());
+    }
+
+    @ExceptionHandler(InvalidDataException.class)
+    public ResponseEntity<?> handleException(InvalidDataException exception){
         return ResponseEntity.status(exception.getStatusCode())
                 .body(exception.getMessage());
     }
